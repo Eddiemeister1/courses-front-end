@@ -1,5 +1,6 @@
-import { createAction } from "@ngrx/store";
+import { createAction } from '@ngrx/store';
+
 
 export const applicationStarted = createAction(
-    '[app] application started'
+  '[app] application started'
 );
