@@ -13,6 +13,14 @@ export class CoursesEffects {
 
     readonly baseUrl = environment.apiUrl;
 
+    updateDayCount$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(actions.courseDayCountAdjusted),
+            map(a => ({ id: a.course.id, days: a.newNumberOfDays })),
+            mergeMap(d => this.client.put(this.baseUrl + `itu/courses/course-catalog/${d.id}/numberOfDays/${d.days}`, {})
+                /// do catchError Here.
+            )
+        ), { dispatch: false })
     editSelectedCourse$ = createEffect(() =>
         this.actions$.pipe(
             ofType(actions.selectedCourseSet),

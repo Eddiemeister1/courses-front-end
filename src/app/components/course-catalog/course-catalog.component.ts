@@ -17,7 +17,7 @@ export class CourseCatalogComponent implements OnInit {
   age: number = 1;
   courses$!: Observable<CourseEntity[]>;
   constructor(private store: Store<AppState>) {
-    store.dispatch(loadCourses());
+    //store.dispatch(loadCourses());
   }
 
   ngOnInit(): void {

@@ -6,7 +6,7 @@
         <p>Number of Days: {{ course.numberOfDays}}</p>
         <div>
             <a class="btn btn-primary"
-               [routerLink]="['course','edit', course.id]">Edit</a>
+               (click)="setSelectedCourse(course)">Edit</a>
         </div>
     </div>
 

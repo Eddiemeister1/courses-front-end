@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
+import { courseDayCountAdjusted } from 'src/app/actions/courses.actions';
 import { AppState, selectHasSelectedCourse, selectSelectedCourse } from 'src/app/reducers';
 import { CourseEntity } from 'src/app/reducers/course-catalog.reducer';
 
@@ -42,7 +43,10 @@ export class CourseEditComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    console.log(this.form.get('numberOfDays')?.value);
+    //console.log(this.form.get('numberOfDays')?.value);
+    const id = this.form.get('numberOfPages')?.value;
+    let courseToUpdate: any;
+    this.store.dispatch(courseDayCountAdjusted({ course: courseToUpdate, newNumberOfDays: parseInt(id) }))
   }
 
 }

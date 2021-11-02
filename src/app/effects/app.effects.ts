@@ -8,12 +8,12 @@ import { map } from 'rxjs/operators';
 export class AppEffects {
 
     // applicationStarted -> loadTheCourses
-    // loadTheCourses$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(appActions.applicationStarted),
-    //         map(() => courseActions.loadCourses())
-    //     )
-    // );
+    loadTheCourses$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(appActions.applicationStarted),
+            map(() => courseActions.loadCourses())
+        )
+    );
 
     constructor(private actions$: Actions) { }
 }

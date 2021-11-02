@@ -19,3 +19,8 @@ export const selectedCourseSet = createAction(
     '[courses] selected course set',
     props<{ payload: CourseEntity }>()
 );
+
+export const courseDayCountAdjusted = createAction(
+    '[courses] course day count adjusted',
+    props<{ course: CourseEntity, newNumberOfDays: number }>()
+);

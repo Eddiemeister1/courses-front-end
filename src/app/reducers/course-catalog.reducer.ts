@@ -22,6 +22,11 @@ const initialState: CourseCatalogState = adapter.getInitialState({
 
 const reducerFunction = createReducer(
   initialState,
+  on(actions.courseDayCountAdjusted, (s, a) => adapter.updateOne({
+    id: a.course.id, changes: {
+      numberOfDays: a.newNumberOfDays
+    }
+  }, s)),
   on(actions.selectedCourseSet, (s, a) => ({ ...s, selectedCourse: a.payload })),
   on(actions.loadCourses, actions.loadCoursesFailed, () => initialState),
   on(actions.loadCoursesCompleted, (s, a) => adapter.setMany(a.payload, s))
