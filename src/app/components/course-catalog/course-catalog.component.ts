@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { loadCourses } from 'src/app/actions/courses.actions';
+import { AppState, selectCoursesArray } from 'src/app/reducers';
+import { CourseEntity } from 'src/app/reducers/course-catalog.reducer';
+import { selectedCourseSet } from '../../actions/courses.actions';
 
 
 @Component({
@@ -9,9 +14,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseCatalogComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  age: number = 1;
+  courses$!: Observable<CourseEntity[]>;
+  constructor(private store: Store<AppState>) {
+    store.dispatch(loadCourses());
   }
 
+  ngOnInit(): void {
+    this.courses$ = this.store.select(selectCoursesArray);
+
+
+  }
+
+  setSelectedCourse(payload: CourseEntity) {
+    this.store.dispatch(selectedCourseSet({ payload }));
+  }
 }

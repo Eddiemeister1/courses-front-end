@@ -7,13 +7,13 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AppEffects {
 
-  // applicationStarted -> loadTheCourses
-  loadTheCourses$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(appActions.applicationStarted),
-      map(() => courseActions.loadCourses())
-    )
-  );
+    // applicationStarted -> loadTheCourses
+    // loadTheCourses$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(appActions.applicationStarted),
+    //         map(() => courseActions.loadCourses())
+    //     )
+    // );
 
-  constructor(private actions$: Actions) { }
+    constructor(private actions$: Actions) { }
 }

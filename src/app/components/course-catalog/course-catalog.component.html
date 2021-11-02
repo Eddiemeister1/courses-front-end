@@ -1,12 +1,13 @@
 <ul class="list-unstyled">
-  <div class="alert alert-info">
-    <p>Intro to Programming</p>
-    <p>This is for new Programmers</p>
-    <p>Number of days: 10</p>
-  </div>
-  <div class="alert alert-info">
-    <p>Angular and Redux</p>
-    <p>This course is for Angular Developers wanting to learn about state management</p>
-    <p>Number of days: 3</p>
-  </div>
+    <div class="alert alert-info"
+         *ngFor="let course of courses$ | async">
+        <p>{{course.title}}</p>
+        <p>{{ course.description || 'No Description Available'}}</p>
+        <p>Number of Days: {{ course.numberOfDays}}</p>
+        <div>
+            <a class="btn btn-primary"
+               [routerLink]="['course','edit', course.id]">Edit</a>
+        </div>
+    </div>
+
 </ul>

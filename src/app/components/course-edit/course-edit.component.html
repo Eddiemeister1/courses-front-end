@@ -1,0 +1,20 @@
+<p> You are looking for course {{id}}</p>
+<div class="alert alert-danger">
+    <p>You Did Not Select A Course</p>
+    <a class="btn btn-primary"
+       [routerLink]="['..', 'courses']">Back To List</a>
+</div>
+<div *ngIf="hasSelectedCourse$ | async">
+    <p>{{ (selectedCourse$ | async)?.title}}</p>
+    <form [formGroup]="form"
+          (ngSubmit)="submit()">
+        <div class="form-group">
+            <label for="numberOfDays"> Number of Days</label>
+            <input formControlName="numberOfDays"
+                   id="numberOfDays"
+                   class="form-control">
+        </div>
+        <button type="submit"
+                class="btn btn-success">Update</button>
+    </form>
+</div>
